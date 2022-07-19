@@ -16,7 +16,7 @@ type verifiedKey struct {
 }
 
 // KeyProvider implements jws.KeyProvider.
-// Once pubkey verified,
+// Once pubkey verified, it's cached.
 type KeyProvider struct {
 	trusted verifiedKey
 	fetcher RootCAFetcher
@@ -30,7 +30,7 @@ func NewKeyProvider(fetcher RootCAFetcher) *KeyProvider {
 	}
 }
 
-// FetchKeys extracts the public key from the y5c field to verify the certificate according to https://datatracker.ietf.org/doc/html/rfc7515#section-4.1.6.
+// FetchKeys extracts the public key from the x5c field to verify the certificate according to https://datatracker.ietf.org/doc/html/rfc7515#section-4.1.6.
 // Treat the chain that matches the root certificate fetched by RootCAFetcher as the root certificate.
 func (p *KeyProvider) FetchKeys(ctx context.Context, sink jws.KeySink, sig *jws.Signature, msg *jws.Message) error {
 	headers := sig.ProtectedHeaders()
