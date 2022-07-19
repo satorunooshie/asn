@@ -1,0 +1,1 @@
+{"notificationType":"DID_CHANGE_RENEWAL_PREF","subtype":"DOWNGRADE","notificationUUID":"c92e001c-96d2-9ou5-q92p-32a5fy0d6g78","notificationVersion":"2.0","data":{"appAppleId":982253034,"bundleId":"hogehoge","bundleVersion":"269822910.1","environment":"Production","signedRenewalInfo":"...","signedTransactionInfo":"..."}}

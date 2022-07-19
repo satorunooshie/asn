@@ -1,0 +1,25 @@
+name: actions
+on: [push, pull_request]
+jobs:
+  lint:
+    name: lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-go@v3
+        with:
+          check-latest: true
+          go-version-file: go.mod
+      - uses: golangci/golangci-lint-action@v3
+  test:
+    name: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-go@v3
+        with:
+          check-latest: true
+          go-version-file: go.mod
+      - name: Test
+        run: go test -v ./...
+
